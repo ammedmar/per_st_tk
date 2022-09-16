@@ -1,0 +1,8 @@
+\begin{algorithm}[H]
+	\KwIn{$M$}
+	$R = M$\\
+	\While{$\exists\ i < j$, $\mathrm{pivot}(R_i) = \mathrm{pivot}(R_j)$}{
+		$R_j = R_i + R_j$
+	}
+	\KwOut{$R$}
+\end{algorithm}

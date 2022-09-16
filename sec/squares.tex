@@ -1,0 +1,255 @@
+%!TEX root = ../per_st_tk.tex
+
+\begin{frame}{Steenrod construction}
+	\pause
+	Unlike the diagonal of spaces, chain approxs to it are \textbf{not} invariant under
+	\[
+	x \otimes y \stackrel{T}{\mapsto} y \otimes x.
+	\]
+	For example in $\gchains(\gcube) \to \gchains(\gcube) \ot \gchains(\gcube)$ we have
+	\begin{center}
+		\begin{tikzpicture}
+		\draw[color=pblue, thick] (0,0)--(1,1);
+		\draw[->] (1.25, .5) -- (1.75, .5);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+		\node at (-0.1, 1){};
+		\draw[color=pblue, thick] (0,0)--(1,0)--(1,1);
+		\draw (1,1)--(0,1)--(0,0);
+		\end{tikzpicture}
+	\end{center}
+
+	\smallskip\pause
+	To correct homotopically the breaking of this symmetry, Steenrod introduced \textbf{explicit} maps
+	\[
+	\Delta_i \colon \gchains(\gsimplex^n) \to \gchains(\gsimplex^n)^{\otimes 2}
+	\quad \text{satisfying} \quad
+	\partial \Delta_{i} = \big(1 \pm T \big) \Delta_{i-1},
+	\]
+	the cup-$i$ coproducts.
+
+	\smallskip\pause
+	These define the Steenrod squares as
+	\[
+	\begin{split}
+		\Sq^k \colon H^\bullet(X; \Ftwo) &\to H^\bullet(X; \Ftwo) \\
+		[\alpha] &\mapsto \big[ (\alpha \otimes \alpha) \Delta_i(-) \big]
+	\end{split}
+	\]
+\end{frame}
+
+\begin{frame}{Self-intersections}
+	\pause
+	Using Poincar\'e duality, squares measure \colorit{self-intersections} in certain cases.
+
+	\pause\bigskip
+	For example
+	\begin{figure}
+		\input{aux/torus_klein}
+	\end{figure}
+
+	\smallskip
+	({\small a}) $\rank \big( \Sq^1\colon H^1(\rT; \Ftwo) \to H^2(\rT; \Ftwo) \big) = 0$,
+
+	\medskip
+	({\small b}) $\rank \big( \Sq^1\colon H^1(\rK; \Ftwo) \to H^2(\rK; \Ftwo) \big) = 1$.
+\end{frame}
+
+\begin{frame}[fragile]{A new description of Steenrod's construction}
+	\pause
+	\colorit{Notation:}
+	\[
+	d_u[v_0, \dots, v_m] = [v_0, \dots, \widehat v_u, \dots, v_m]
+	\]
+	\pause\vspace*{-15pt}
+	\[
+	\rP_q^n = \set[\big]{U \subseteq \{0, \dots, n\} : \bars{U} = q}
+	\]
+	\pause\vspace*{-15pt}
+	\[
+	\forall \, U = \{u_1 < \dots < u_q\} \in \rP_q^n
+	\]
+	\pause\vspace*{-15pt}
+	\[
+	d_U = d_{u_1} \dotsm \, d_{u_q}
+	\]
+	\pause\vspace*{-15pt}
+	\[
+	U^\varepsilon = \big\{ u_i \in U \mid u_i + i \equiv \varepsilon \text{ mod } 2 \big\}
+	\]
+
+	\bigskip\pause
+	\colorit{Definition (Med.)} \\
+	For a basis element $x \in \gchains_m(\gsimplex^n, \Ftwo)$
+	\vspace*{-5pt}
+	\[
+	\Delta_i(x) \ = \!\!\! \sum_{U \in \rP_{m-i}^n} \!\! d_{U^0}(x) \otimes d_{U^1}(x)
+	\]
+	\vspace*{-10pt}
+
+	\pause
+	\colorit{Example:}
+	\vspace*{-5pt}
+	\begin{align*}
+	\Delta_0 [0,1,2] &=
+	\Big( d_{12} \otimes \id + d_2 \otimes d_0 + \id \otimes d_{01} \Big) [0,1,2]^{\otimes 2} \\ &=
+	[0] \otimes [0,1,2] + [0,1] \otimes [1,2] + [0,1,2] \otimes [2].
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Fast computation of Steenrod squares}
+	\pause
+	Comparing with SAGE: (algorithm based on EZ-AW contraction)
+
+	\smallskip\pause
+	\colorit{$\Sq^1$} on \colorit{$\Sigma^i\R P^2$} ($i^\th$ suspension of the real projective plane)
+
+	\medskip
+	\includegraphics[width=\textwidth]{aux/comp_sus_rp2.pdf}
+\end{frame}
+
+\begin{frame}{Steenrod squares for simplicial complexes}
+	\input{aux/stsq}
+\end{frame}
+
+\begin{frame}[fragile]{Steenrod barcodes}
+	\pause
+	Given a filtered simplicial complex $X$
+	\[
+	X_0 \to X_1 \to \cdots \to X_n.
+	\]
+
+	\pause
+	Cohomology induces a \colorit{persistent module}, its \colorit{barcode} is a summary of how Betti numbers are consecutively shared.\\
+
+	\smallskip
+	\phantom{A cohomology operation induces an endomorphism}
+	\[
+	\begin{tikzcd}[column sep = 15]
+		H^\bullet(X_n; \Ftwo) \arrow[r] & \cdots \arrow[r] & H^\bullet(X_{n-1}; \Ftwo) \arrow[r] & H^\bullet(X_0; \Ftwo) \\
+		\phantom{H^\bullet(X_n; \Ftwo)} \arrow[u, "\phantom{\Sq^k}", phantom] & \phantom{\cdots} & \phantom{H^\bullet(X_{n-1}; \Ftwo)} & \phantom{H^\bullet(X_0; \Ftwo)} \arrow[u, "\phantom{\Sq^k}", phantom] \phantom{.}
+	\end{tikzcd}
+	\]
+\end{frame}
+
+\begin{frame}[fragile]{Steenrod barcodes}
+	Given a filtered simplicial complex $X$
+	\[
+	X_0 \to X_1 \to \cdots \to X_n.
+	\]
+	Cohomology induces a \colorit{persistent module}, its \colorit{barcode} is a summary of how Betti numbers are consecutively shared.
+
+	\smallskip
+	A cohomology operation induces an \colorit{endomorphism}
+	\[
+	\begin{tikzcd}[column sep = 15]
+	H^\bullet(X_n; \Ftwo) \arrow[r] & \cdots \arrow[r] & H^\bullet(X_{n-1}; \Ftwo) \arrow[r] & H^\bullet(X_0; \Ftwo) \\
+	H^\bullet(X_n; \Ftwo) \arrow[u, "\Sq^k"] \arrow[r] & \cdots \arrow[r] & H^\bullet(X_{n-1}; \Ftwo) \arrow[u, "\Sq^k"] \arrow[r] & H^\bullet(X_0; \Ftwo) \arrow[u, "\Sq^k"].
+	\end{tikzcd}
+	\]
+
+	\pause
+	\colorit{Definition (Lupo--Med.--Tauzin)} \\
+	The \colorit{$\Sq^k$-barcode} of $X$ is defined as the barcode of $\mathrm{img}\ \Sq^k$.
+
+	\pause\medskip
+	\colorit{Theorem (Ling Zhou--Med.--M\'emoli)} \\
+	These barcodes are stable.
+\end{frame}
+
+\begin{frame}{Example} \pause
+	Filtrations of the cone on the suspension of $S^2 \vee S^4$ and $\bC \rP^2$.
+
+	\pause
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{aux/s2_s4.pdf}
+			\caption{$\mathrm C\,\Sigma(S^2 \vee S^4)$}
+			\label{f:s2_s4}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{aux/cp2.pdf}
+			\caption{$\mathrm C\,\Sigma\,\bC\rP^2$}
+			\label{f:cp2}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Algorithm}
+	\pause
+	It has three steps:
+
+	\begin{enumerate}
+		\pause\bigskip
+		\item Usual reduction applied to the anti-transposed boundary $M$ yielding
+		\[
+		R = M V
+		\]
+		where $R$ is reduced and $V$ is invertible.
+
+		\pause\bigskip
+		\item Read off cohomology representatives and apply the new $\Sq^k$ algorithm to create a matrix $Q^k$ with the resulting representatives.
+
+		\pause\bigskip
+		\item Using that $R$ is made of generating coboundaries, apply a reduction algorithm to $Q^k$ with respect to $R$ recording the rank of $Q_{\leq j}^k$.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Third step}
+	\input{aux/st_bar}
+\end{frame}
+
+\begin{frame}{\texttt{steenroder}}
+	\pause
+	With \textit{U. Lupo} and \textit{G.~Tauzin}
+
+	\begin{center}
+		\includegraphics[scale=.2]{aux/umberto}
+		\qquad
+		\includegraphics[scale=.2]{aux/guillaume}
+	\end{center}
+
+	from \colorit{\texttt{giotto-tda}}'s team we developed a Python package for this.
+
+	\pause\smallskip
+	It can easily installed via
+	\begin{center}
+		\texttt{python -m pip install -U steenroder}
+	\end{center}
+
+	and we accept contributions at
+	\begin{center}
+		\url{https://github.com/Steenroder/steenroder}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Space of conformations of $\mathrm{C_8H_{16}}$}
+	\pause
+	Points in $\R^{24}$ (positions of $8$ carbons in $\R^3$)
+
+	\pause\smallskip
+	Computing $\Sq^1$ barcode of a ``smooth component'' of this point cloud
+	\smallskip
+	\includegraphics[width=\textwidth]{aux/cyclo-octane_subsampled_absolute_barcodes.pdf}
+	Consistent with a \colorit{Klein bottle} component.
+\end{frame}
+
+%\begin{frame}{Unicity of Steenrod's cup-$i$ construction}
+%	\pause
+%	\colorit{Theorem (Med.)} \\
+%	All cup-$i$ constructions in the literature are equal up isomorphism:
+%	\vskip -7.5pt
+%	\[
+%	\triangle \sim \triangle^\prime \iff \forall i \in \N, \ \triangle_i = \triangle_i^\prime \ \vee \, \triangle_i = T \triangle_i^\prime.
+%	\]
+%	\vskip -3pt
+%	(Proven via an axiomatic characterization.)
+%
+%	\medskip\pause
+%	\colorit{Theorem (Laplante-Anfossi--Med.--Vallette)} \\
+%	Let $P \subset \R^n$ be an $n$-dim convex polytope.
+%	A generic orthogonal ordered basis of $\R^n$ defines a cellular cup-$i$ construction $S^\infty \times P \to P \times P$.
+%\end{frame}

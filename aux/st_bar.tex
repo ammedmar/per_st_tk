@@ -1,0 +1,18 @@
+\begin{algorithm}[H]
+	\KwIn{$R,\, Q^k$}
+	Alive $= \{0, \dots, m\}$,
+	Barcode $= \emptyset$ \\
+	\For{$j = 0, \dots, m$}{
+		$R_{\leq j} \mid Q^k_{\leq j} = \text{Reduce}\left( R_{\leq j} \mid Q^k_{\leq j} \right)$ \\
+		\For{$i = 0, \dots, j$}{
+			\If{$i \in \mathrm{Alive\ and\ } Q^k_i = 0$}{
+				remove $i$ from Alive \\
+				\If{$i <j $}{add $[m-j, m-i]$ to Barcode}
+			}
+		}
+	}
+	\For{$i \in \mathrm{Alive}$}{
+		add $[-1, m-i]$ to Barcode
+	}
+	\KwOut{Barcode}
+\end{algorithm}

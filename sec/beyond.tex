@@ -1,0 +1,87 @@
+%!TEX root = ../per_st_tk.tex
+
+\begin{frame}[fragile]{Future: Operations at odd primes}
+	\pause
+	Steenrod squares come from the symmetry of the \textbf{binary} diagonal.
+
+	\medskip\pause
+	Steenrod, and more generally May, also defined operations
+	\[
+	P_k \colon H^\bullet(X; \Fp) \to H^\bullet(X; \Fp)
+	\]
+	from the symmetry of diagonal $X \to X \times \dots \times X$.
+
+	\medskip\pause
+	\colorit{Note}: indirect group homology definition.
+	No generalizations of cup-$i$.
+
+	\bigskip\pause
+	\colorit{Construction (Med.)} \\
+	Explicit cup-$(p,i)$ coproducts defining these operations.
+
+	\medskip\pause
+	\colorit{Example} \\
+	Using the computer algebra system \colorit{\texttt{ComCH}} we have $\Delta_{3,2}[0,1,2] = $
+
+	\begin{verbatim}
+		- [0,1][0,1,2][0,1] + [0,1,2][0,2][0,1] + [0,2][0,2][0,1,2]
+		- [0,1,2][0,1,2][1] - [0,2][0,1,2][1,2] + [0,1,2][1,2][1,2]
+		- [0,1][1,2][0,1,2] - [0,1,2][2][0,1,2] - [0][0,1,2][0,1,2]
+	\end{verbatim}
+\end{frame}
+
+%\begin{frame}{A more abstract viewpoint}
+%	\pause
+%	Operads control algebraic structures.
+%
+%	\bigskip\pause
+%	The operad $\cC om$ controls cocommutative and coassociative coalgebras.
+%
+%	\bigskip\pause
+%	An $E_\infty$-operad is an $\sym$-cofibrant resolution of $\cC om$.
+%
+%	\bigskip\pause
+%	Controls coalgebras cocomm. and coassoc. up to coherent homotopies.
+%
+%	\bigskip\pause
+%	$E_\infty$-structures have a long history:
+%	\smallskip\pause
+%	\begin{itemize}
+%		\item (co)homology operations,
+%		\item recognition of infinite loop spaces,
+%		\item algebraic models of the homotopy category.
+%	\end{itemize}
+%
+%	\bigskip\pause
+%	\colorit{Fact}:
+%	Fully deriving its diagonal map, the chains of a space form an $E_\infty$-coalgebra.
+%
+%	\bigskip\pause
+%	\colorit{Principle} (Quillen, Sullivan, Mandell, ...): \\
+%	\textbf{All} homotopy information of spaces is in this algebraic model.
+%
+%	\bigskip\pause
+%	\colorit{Question}: How explicit can this $E_\infty$-structure be made?
+%\end{frame}
+%
+%\begin{frame}{Explicit $E_\infty$-structure on (co)chains}
+%	\pause
+%	\colorit{Theorem (Med.)} \\
+%	The collection of maps $\gchains(\gsimplex^n) \to \gchains(\gsimplex^n)^{\otimes r}$ obtained from compositions of
+%	\begin{align*}
+%		\Delta &\colon \gchains(\gsimplex^n) \to \gchains(\gsimplex^n)^{\otimes 2}
+%		\qquad \text{(AW diagonal)} \\
+%		\ast &\colon \gchains(\gsimplex^n)^{\otimes 2} \to \gchains(\gsimplex^n)
+%		\qquad \text{(Join map)}
+%	\end{align*}
+%	defines an $E_\infty$-coalgebra on simplicial chains.
+%
+%	\bigskip\pause
+%	\colorit{Join map} \\
+%	\qquad\qquad \scalebox{0.7}{\input{aux/join}}
+%
+%	\bigskip\pause
+%	\colorit{Other versions} \\
+%	\colorit{1)} Cubical (Kaufmann--Med.) \\
+%	\colorit{2)} Multisimplicial (Med.--Pizzi--Salvatore).
+%\end{frame}
