@@ -1,13 +1,18 @@
 %!TEX root = ../per_st_tk.tex
 
-\begin{frame}{Today's goal}
+\begin{frame}{Goal: introduce Steenrod barcodes}
 	\pause
-	Introduce \colorit{Steenrod barcodes}, new invariants for TDA,
+	These generalize (Betti) barcodes and are also
 	\pause
-	which appear in real-data, are robust to noise, and computable using \colorit{\texttt{steenroder}}, a ready-to-use \texttt{Python} tool.
+	\colorit{stable},
+	\pause
+	\colorit{computable},
+	\pause
+	present in \colorit{real-data},
+	\pause
+	and \colorit{vectorizable}.
 
 	\pause\medskip
-	\colorit{Example}
 	\vskip-15pt
 	\begin{figure}
 		\centering
@@ -17,70 +22,12 @@
 			\caption{$\mathrm C\,\Sigma(S^2 \vee S^4)$}
 			\label{f:s2_s4}
 		\end{subfigure}
+		\pause
 		\begin{subfigure}[b]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{aux/cp2.pdf}
-			\caption{$\mathrm C\,\Sigma\,\bC\rP^2$}
+			\caption{$\mathrm C\,\Sigma\,\mathbb C \mathrm P^2$}
 			\label{f:cp2}
 		\end{subfigure}
 	\end{figure}
-\end{frame}
-
-\begin{frame}{Viewpoint}
-	\pause
-	\colorit{A goal of algebraic topology} \\
-	To construct invariants of spaces up to some notion of equivalence.
-
-	\bigskip\pause
-	\colorit{Today} \\
-	CW complexes and homotopy equivalence.
-
-	\bigskip\pause
-	\colorit{A basic tension} \\
-	Computability \colorit{vs} strength of invariants.
-
-	\bigskip\pause
-	\colorit{Example} \\
-	Cohomology \colorit{vs} homotopy.
-
-	\bigskip\pause
-	\colorit{A more subtle one} \\
-	Effectiveness \colorit{vs} functoriality of their constructions.
-
-	\bigskip\pause
-	\colorit{Example} \\
-	Cohomology via chain complex \colorit{vs} maps to Eilenberg-Maclane spaces.
-\end{frame}
-
-\begin{frame}{Effectively defined cohomology}
-	\pause
-	\colorit{Poincar\'{e}'s idea} \\
-	Break spaces into contractible combinatorial pieces: \\
-	\begin{center}
-		Simplices $\gsimplex^n$.
-%		, cubes $\gcube^n$, ...
-	\end{center}
-
-%	\pause
-%	\colorit{Kan's idea} \\
-%	Replace spaces by functors with a geometric realization: \\
-%	\begin{center}
-%		Simplicial sets, cubical sets, ...
-%	\end{center}
-
-	\pause
-	\colorit{Compute cohomology} \\
-	Using a chain complex assembled from the standard chain complexes: \\
-	\begin{center}
-		$\gchains(\gsimplex^n)$.
-%		, $\gchains(\gcube^n)$, ...
-	\end{center}
-
-	\pause
-	\colorit{Enhance cohomology} \\
-	With effective computations of finer invariants in cohomology by understanding
-
-	\begin{center}
-		$\gchains(\gsimplex^n) \to \gchains(\gsimplex^n) \ot \gchains(\gsimplex^n)$
-	\end{center}
 \end{frame}

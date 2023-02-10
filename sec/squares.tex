@@ -1,99 +1,70 @@
 %!TEX root = ../per_st_tk.tex
 
-\begin{frame}{Steenrod construction}
+\begin{frame}{Cup-$i$ coproducts}
 	\pause
-	Unlike the diagonal of spaces, chain approxs to it are \textbf{not} invariant under
+	We need \colorit{explicit} maps
 	\[
-	x \otimes y \stackrel{T}{\mapsto} y \otimes x.
-	\]
-	For example in $\gchains(\gcube) \to \gchains(\gcube) \ot \gchains(\gcube)$ we have
-	\begin{center}
-		\begin{tikzpicture}
-		\draw[color=pblue, thick] (0,0)--(1,1);
-		\draw[->] (1.25, .5) -- (1.75, .5);
-		\end{tikzpicture}
-		\begin{tikzpicture}
-		\node at (-0.1, 1){};
-		\draw[color=pblue, thick] (0,0)--(1,0)--(1,1);
-		\draw (1,1)--(0,1)--(0,0);
-		\end{tikzpicture}
-	\end{center}
-
-	\smallskip\pause
-	To correct homotopically the breaking of this symmetry, Steenrod introduced \textbf{explicit} maps
-	\[
-	\Delta_i \colon \gchains(\gsimplex^n) \to \gchains(\gsimplex^n)^{\otimes 2}
+	\Delta_i \colon \gchains(X) \to \gchains(X)^{\otimes 2}
 	\quad \text{satisfying} \quad
-	\partial \Delta_{i} = \big(1 \pm T \big) \Delta_{i-1},
+	\partial \Delta_{i} = \big(1 \pm T \big) \Delta_{i-1}
 	\]
-	the cup-$i$ coproducts.
+
+	\pause\bigskip\smallskip
+	Then, the \colorit{product} is
+	\[
+	\begin{split}
+		H^\bullet(X) \ot H^\bullet(X) &\to H^\bullet(X) \\
+		[\alpha] \ot [\beta] &\mapsto \big[ (\alpha \otimes \beta) \Delta_0(-) \big]
+	\end{split}
+	\]
 
 	\smallskip\pause
-	These define the Steenrod squares as
+	and the $k^\th$ \colorit{Steenrod square}
 	\[
 	\begin{split}
 		\Sq^k \colon H^\bullet(X; \Ftwo) &\to H^\bullet(X; \Ftwo) \\
-		[\alpha] &\mapsto \big[ (\alpha \otimes \alpha) \Delta_i(-) \big]
+		[\alpha] &\mapsto \big[ (\alpha \otimes \alpha) \Delta_{\bars{\alpha}-k}(-) \big]
 	\end{split}
 	\]
 \end{frame}
 
-\begin{frame}{Self-intersections}
+\begin{frame}{A new description of Steenrod's construction}
 	\pause
-	Using Poincar\'e duality, squares measure \colorit{self-intersections} in certain cases.
-
-	\pause\bigskip
-	For example
-	\begin{figure}
-		\input{aux/torus_klein}
-	\end{figure}
-\end{frame}
-
-\begin{frame}[fragile]{A new description of Steenrod's construction}
-	\pause
-	\colorit{Notation:}
-	\[
-	d_u[v_0, \dots, v_m] = [v_0, \dots, \widehat v_u, \dots, v_m]
-	\]
-	\pause\vspace*{-15pt}
-	\[
-	\rP_q^n = \set[\big]{U \subseteq \{0, \dots, n\} : \bars{U} = q}
-	\]
-	\pause\vspace*{-15pt}
-	\[
-	\forall \, U = \{u_1 < \dots < u_q\} \in \rP_q^n
-	\]
-	\pause\vspace*{-15pt}
-	\[
-	d_U = d_{u_1} \dotsm \, d_{u_q}
-	\]
-	\pause\vspace*{-15pt}
-	\[
-	U^\varepsilon = \big\{ u_i \in U \mid u_i + i \equiv \varepsilon \text{ mod } 2 \big\}
-	\]
-
-	\bigskip\pause
-	\colorit{Definition (Med.)} \\
-	For a basis element $x \in \gchains_m(\gsimplex^n, \Ftwo)$
-	\vspace*{-5pt}
-	\[
-	\Delta_i(x) \ = \!\!\! \sum_{U \in \rP_{m-i}^n} \!\! d_{U^0}(x) \otimes d_{U^1}(x)
-	\]
+	\colorit{Notation.}
 	\vspace*{-10pt}
+	\begin{align*}
+		&\forall n,q \in \N,
+		\quad \rP_q^n = \set[\big]{U \subseteq \{0, \dots, n\} : \bars{U} = q} \\
+		&\forall U = \{u_1 < \dots < u_q\} \in \rP_q^n,
+		\quad d_U = d_{u_1} \dotsm \, d_{u_q}
+	\end{align*}
 
 	\pause
-	\colorit{Example:}
-	\vspace*{-5pt}
-	\begin{align*}
-	\Delta_0 [0,1,2] &=
-	\Big( d_{12} \otimes \id + d_2 \otimes d_0 + \id \otimes d_{01} \Big) [0,1,2]^{\otimes 2} \\ &=
-	[0] \otimes [0,1,2] + [0,1] \otimes [1,2] + [0,1,2] \otimes [2].
-	\end{align*}
+	\colorit{Definition (Med.)} \\
+	For a basis element $x \in \gchains_m(X, \Ftwo)$
+	\[
+	\textstyle \Delta_i(x) = \sum d_{U^0}(x) \otimes d_{U^1}(x)
+	\]
+	where the sum is over $\rP^n_{n-i}$ and
+	\begin{equation*} \label{e:partition subsets}
+		U^0 = \{u_j \in U\mid u_j \equiv j \text{ mod } 2\}, \qquad
+		U^1 = \{u_j \in U\mid u_j \not\equiv j \text{ mod } 2\}.
+	\end{equation*}
+
+	\pause\medskip
+	\colorit{Theorem (Med.)} \\
+	All cup-$i$ constructions in the literature are equal up isomorphism:
+	\vskip -7.5pt
+	\[
+	\triangle \sim \triangle^\prime \iff \forall i \in \N, \ \triangle_i = \triangle_i^\prime \ \vee \, \triangle_i = T \triangle_i^\prime.
+	\]
+	\vskip -3pt
+	(Proven via an axiomatic characterization.)
 \end{frame}
 
 \begin{frame}{Fast computation of Steenrod squares}
 	\pause
-	Comparing with SAGE: (algorithm based on EZ-AW contraction)
+	Comparing to SAGE: (algorithm based on EZ-AW contraction)
 
 	\smallskip\pause
 	\colorit{$\Sq^1$} on \colorit{$\Sigma^i\R P^2$} ($i^\th$ suspension of the real projective plane)
@@ -106,26 +77,80 @@
 	\input{aux/stsq}
 \end{frame}
 
-\begin{frame}{Point clouds and persistence}
+\begin{frame}{Points clouds and multi-scale approximation}
 	\pause
+	Data sets are often encountered as point clouds in $\R^n$.
 
-	Data can be encountered in many forms.
-
-	\smallskip\pause
-	A convenient representation is as a subset of $\R^n$, i.e. \colorit{vectorized}
-
+	\pause
 	\begin{center}
 		\includegraphics[scale=.4]{aux/point_cloud_cropped}
 	\end{center}
 
-	\medskip\pause
-	Use \colorit{distance parameter} to construct a filtered simplicial complex.
+	\pause
+	Their underlying probability distribution is concentrated on a subspace.
 
+	\medskip\pause
+	Use \colorit{distance parameter} to approximate it with simplicial complexes.
 	\medskip
 	\begin{center}
 		\includegraphics[scale=.7]{aux/vietoris-rips}
-		%		\includegraphics[scale=.6]{aux/betti}
 	\end{center}
+
+	\vskip-15pt
+	\[
+	X_{0} \subset X_{1} \subset\dots\subset X_{n}
+	\]
+\end{frame}
+
+\begin{frame}{Persistence homology}
+	\pause
+	Applying a homology functor (over a field)
+	\[
+	H_d(X_0) \to H_d(X_1) \to\dots\to H_d(X_n)
+	\]
+	get a \colorit{persistence module}, i.e. a diagram of vector spaces.
+
+	\pause\bigskip
+	The way dimensions fit together defines the \colorit{barcode}.
+	\begin{center}
+		\includegraphics[scale=.7]{aux/vietoris-rips}
+		\includegraphics[scale=.6]{aux/betti}
+	\end{center}
+
+	\pause\smallskip
+	\colorit{Stability}: The passage from point clouds to barcodes is Lipschitz
+	\[
+	d_{GH}(\fX, \fX') \leq c \cdot d_{BN}(B_{\fX}, B_{\fX'}).
+	\]
+
+	\pause
+	\colorit{Computability}: Based on matrix reduction algorithms
+	\[
+	\sim O(n^3).
+	\]
+\end{frame}
+
+\begin{frame}{Dualities}
+	\pause
+	The Betti barcodes of
+
+	\medskip
+	\quad Abs Hom\phantom{co} \qquad $H_d(X_0) \to H_d(X_1) \to\dots\to H_d(X_n)$
+
+	\medskip
+	\quad Abs coHom \!\qquad $H^d(X_0) \leftarrow H^d(X_1) \leftarrow\dots\leftarrow H^d(X_n)$
+
+	\medskip
+	\quad Rel Hom\phantom{co} \qquad $H_d(X_n,X_0) \leftarrow H_d(X_n,X_1) \leftarrow\dots\leftarrow H_d(X_n,X_n)$
+
+	\medskip
+	\quad Rel coHom \!\qquad $H^d(X_n,X_0) \to H^d(X_n,X_1) \to\dots\to H^d(X_n,X_n)$
+
+	\medskip
+	provide \colorit{equivalent} information.
+
+	\pause\medskip
+	But \colorit{cohomology} has performance and theoretical \colorit{advantages}.
 \end{frame}
 
 \begin{frame}[fragile]{Steenrod barcodes}
@@ -173,7 +198,7 @@
 	These barcodes are stable.
 \end{frame}
 
-\begin{frame}{Example} \pause
+\begin{frame}{Example $\Sq^2$} \pause
 	Filtrations of the cone on the suspension of $S^2 \vee S^4$ and $\bC \rP^2$.
 
 	\pause
@@ -214,9 +239,9 @@
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}{Third step}
-	\input{aux/st_bar}
-\end{frame}
+%\begin{frame}{Third step}
+%	\input{aux/st_bar}
+%\end{frame}
 
 \begin{frame}{\texttt{steenroder}}
 	\pause
@@ -246,12 +271,26 @@
 	\pause
 	Points in $\R^{24}$ (positions of $8$ carbons in $\R^3$)
 
-	\pause\smallskip
-	Computing $\Sq^1$ barcode of a ``smooth component'' of this point cloud
-	\smallskip
-	\includegraphics[width=\textwidth]{aux/cyclo-octane_subsampled_absolute_barcodes.pdf}
-	Consistent with a \colorit{Klein bottle} component.
+	\pause\medskip
+	$H^1$ (green) and $H^2$ (blue) barcodes of (part of) this point cloud
+	\includegraphics[width=\textwidth]{aux/molecule_top.pdf}
+
+	\pause
+	$\Sq^1$ barcode
+	\includegraphics[width=\textwidth]{aux/molecule_bot.pdf}
+	Consistent with a \colorit{Klein bottle}.
 \end{frame}
+
+%\begin{frame}{Space of conformations of $\mathrm{C_8H_{16}}$}
+%	\pause
+%	Points in $\R^{24}$ (positions of $8$ carbons in $\R^3$)
+%
+%	\pause\smallskip
+%	Computing $\Sq^1$ barcode of a ``smooth component'' of this point cloud
+%	\smallskip
+%	\includegraphics[width=\textwidth]{aux/cyclo-octane_subsampled_absolute_barcodes.pdf}
+%	Consistent with a \colorit{Klein bottle} component.
+%\end{frame}
 
 %\begin{frame}{Unicity of Steenrod's cup-$i$ construction}
 %	\pause

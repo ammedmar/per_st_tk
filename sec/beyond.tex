@@ -1,35 +1,5 @@
 %!TEX root = ../per_st_tk.tex
 
-\begin{frame}[fragile]{Future: Operations at odd primes}
-	\pause
-	Steenrod squares come from the symmetry of the \textbf{binary} diagonal.
-
-	\medskip\pause
-	Steenrod, and more generally May, also defined operations
-	\[
-	P_k \colon H^\bullet(X; \Fp) \to H^\bullet(X; \Fp)
-	\]
-	from the symmetry of diagonal $X \to X \times \dots \times X$.
-
-	\medskip\pause
-	\colorit{Note}: indirect group homology definition.
-	No generalizations of cup-$i$.
-
-	\bigskip\pause
-	\colorit{Construction (Med.)} \\
-	Explicit cup-$(p,i)$ coproducts defining these operations.
-
-	\medskip\pause
-	\colorit{Example} \\
-	Using the computer algebra system \colorit{\texttt{ComCH}} we have $\Delta_{3,2}[0,1,2] = $
-
-	\begin{verbatim}
-		- [0,1][0,1,2][0,1] + [0,1,2][0,2][0,1] + [0,2][0,2][0,1,2]
-		- [0,1,2][0,1,2][1] - [0,2][0,1,2][1,2] + [0,1,2][1,2][1,2]
-		- [0,1][1,2][0,1,2] - [0,1,2][2][0,1,2] - [0][0,1,2][0,1,2]
-	\end{verbatim}
-\end{frame}
-
 %\begin{frame}{A more abstract viewpoint}
 %	\pause
 %	Operads control algebraic structures.

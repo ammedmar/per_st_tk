@@ -1,31 +1,31 @@
 %!TEX root = ../per_st_tk.tex
 
-\begin{frame}{Conclusions}
+\begin{frame}[fragile]{Future: Operations at odd primes}
 	\pause
-	\colorit{Slogan} \\
-	Homotopy theory needs effective constructions to be used concretely. \\
+	Steenrod squares come from the symmetry of the \textbf{binary} diagonal.
 
 	\medskip\pause
-	\colorit{Today's focus} \\
-	Steenrod operations.
+	Steenrod, and more generally May, also defined operations
+	\[
+	P_k \colon H^\bullet(X; \Fp) \to H^\bullet(X; \Fp)
+	\]
+	from the symmetry of diagonal $X \to X \times \dots \times X$.
 
 	\medskip\pause
-	\colorit{New robust invariants} \\
-	Steenrod barcodes.
+	\colorit{Note}: indirect group homology definition.
+	No generalizations of cup-$i$.
+
+	\bigskip\pause
+	\colorit{Construction (Med.)} \\
+	Explicit cup-$(p,i)$ coproducts defining these operations.
 
 	\medskip\pause
-	\colorit{New tool} \\
-	\texttt{steenroder}.
+	\colorit{Example} \\
+	Using the computer algebra system \colorit{\texttt{ComCH}} we have $\Delta_{3,2}[0,1,2] = $
 
-	\medskip\pause
-	\colorit{Application} \\
-	Conformation space of $\rC_8\rH_{16}$.
-
-	\medskip\pause
-	\colorit{Challenges} \\
-	\pause
-	What other data sets exhibit non-trivial Steenrod barcodes?
-
-	\smallskip\pause
-	What are they telling us about the data set, domain specifically?
+	\begin{verbatim}
+		- [0,1][0,1,2][0,1] + [0,1,2][0,2][0,1] + [0,2][0,2][0,1,2]
+		- [0,1,2][0,1,2][1] - [0,2][0,1,2][1,2] + [0,1,2][1,2][1,2]
+		- [0,1][1,2][0,1,2] - [0,1,2][2][0,1,2] - [0][0,1,2][0,1,2]
+	\end{verbatim}
 \end{frame}
